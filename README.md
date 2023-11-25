@@ -37,13 +37,13 @@ This is a Telegram bot designed to facilitate communication with the technical s
 3. Create a `.env` file with the necessary Trello API key, token, Telegram bot API key, and other configuration parameters.
 4. Run the bot script (`main.py`) to start the Telegram bot.
 
-#### Contributors:
 
 ### Screenshot
 
 ![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/c8a16a59-51df-499f-b9d7-34a29ef825e9) ![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/ba453c56-5e29-4e49-be6a-428a594cf75c)
 ![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/106a0885-2662-4792-8681-f76480ca6c6f)
 
+#### Contributors:
 
 - Islambek Shamshiev
 
@@ -98,4 +98,5 @@ This is a Telegram bot designed to facilitate communication with the technical s
 ![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/106a0885-2662-4792-8681-f76480ca6c6f)
 
 #### Участники:
+
 - Исламбек Шамшиев
