@@ -41,10 +41,7 @@ This is a Telegram bot designed to facilitate communication with the technical s
 
 ### Screenshot
 
-![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/45639d41-2563-4bf6-bc4a-09a1ba4bf8fa)
-![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/0954f688-50fe-4e57-ae1f-3bfcf3958918)
-![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/c8a16a59-51df-499f-b9d7-34a29ef825e9)
-![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/ba453c56-5e29-4e49-be6a-428a594cf75c)
+![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/c8a16a59-51df-499f-b9d7-34a29ef825e9) ![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/ba453c56-5e29-4e49-be6a-428a594cf75c)
 ![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/106a0885-2662-4792-8681-f76480ca6c6f)
 
 
@@ -97,10 +94,7 @@ This is a Telegram bot designed to facilitate communication with the technical s
 
 ### Скриншоты
 
-![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/45639d41-2563-4bf6-bc4a-09a1ba4bf8fa)
-![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/0954f688-50fe-4e57-ae1f-3bfcf3958918)
-![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/c8a16a59-51df-499f-b9d7-34a29ef825e9)
-![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/ba453c56-5e29-4e49-be6a-428a594cf75c)
+![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/c8a16a59-51df-499f-b9d7-34a29ef825e9) ![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/ba453c56-5e29-4e49-be6a-428a594cf75c)
 ![image](https://github.com/SakeXYZ/Tree_Bot/assets/55310909/106a0885-2662-4792-8681-f76480ca6c6f)
 
 #### Участники:
