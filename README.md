@@ -39,7 +39,7 @@ This is a Telegram bot designed to facilitate communication with the technical s
 
 #### Contributors:
 
-- [Islambek Shamshiev]
+- Islambek Shamshiev
 
 
 ---
@@ -86,4 +86,4 @@ This is a Telegram bot designed to facilitate communication with the technical s
 4. Запустите скрипт бота (`main.py`), чтобы запустить бота Telegram.
 
 #### Участники:
-- [Исламбек Шамшиев]
+- Исламбек Шамшиев
