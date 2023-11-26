@@ -23,8 +23,8 @@ application_list_id_tree = os.getenv('ZM_TREE')
 application_list_id_four = os.getenv('ZM_FOUR')
 application_list_id_five = os.getenv('ZM_FIVE')
 application_list_id_six = os.getenv('ZM_SIX')
-
-application_list_id_free_time = os.getenv('ZM_FREE')
+application_list_id_seven = os.getenv('ZM_SEVEN')
+application_list_id_free_time = os.getenv('NO_CODE')
 
 # Инициализация бота и диспетчера
 bot = Bot(os.getenv('ZM_API'))
@@ -180,6 +180,15 @@ try:
                                "desc": card_desc}
                 new_card = requests.post(create_card_end_point, json=json_object)
                 return json.loads(new_card.text)
+            case '#7':
+                create_card_end_point = main_trello_end_point + 'cards'
+                json_object = {"key": trello_key,
+                               "token": trello_token,
+                               "idList": application_list_id_seven,
+                               "name": ' '.join(card_name),
+                               "desc": card_desc}
+                new_card = requests.post(create_card_end_point, json=json_object)
+                return json.loads(new_card.text)
             case _:
                 create_card_end_point = main_trello_end_point + 'cards'
                 json_object = {"key": trello_key,
@@ -197,7 +206,23 @@ except Exception as SendToTrelloErr:
     print(f"Ошибка {SendToTrelloErr} при отправке запроса в Trello")
 
 
+try:
+    def text_process(list_accept):
+        change_list = ' '.join(list_accept)
+        change_2 = change_list.split('-')
+        change_list = change_2[0].split()
 
+        print(list_accept[0:2], list_accept[2::])
+        print(f"{change_list[0]} Change list")
+        now = datetime.now()
+        dt_string = now.strftime("%d/%m/%Y")
+        tm_string = now.strftime('%H:%M:%S')
+        # Создание карточки Trello на основе текста сообщения пользователя
+        print(create_trello_card(' '.join(change_list),
+                                 ''.join(change_2[1]) + '\n\nДата:' + dt_string + f'\nВремя:{tm_string}',
+                                 number_one=change_list[0]))
+except Exception as process_err:
+    pass
 
 try:
     # Обработчик всех остальных сообщений от пользователя
@@ -213,25 +238,17 @@ try:
         list_accept = []
         for i in msg.text.split():
             list_accept.append(i)
+        text_process(list_accept)
 
-        change_list = ' '.join(list_accept)
-        change_2 = change_list.split('-')
-        change_list = change_2[0].split()
 
-        print(list_accept[0:2], list_accept[2::])
-        print(f"{change_list[0]} Change list")
-        now = datetime.now()
-        dt_string = now.strftime("%d/%m/%Y")
-        tm_string = now.strftime('%H:%M:%S')
-        # Создание карточки Trello на основе текста сообщения пользователя
-        print(create_trello_card(' '.join(change_list),
-                                 ''.join(change_2[1]) + '\n\nДата:' + dt_string + f'\nВремя:{tm_string}',
-                                 number_one=change_list[0]))
 
 except Exception as ind_err:
     print(f"Ошибка при отправке на обработке")
 
 
 
-if __name__ == "__main__":
+def main():
     executor.start_polling(dp)
+
+if __name__ == "__main__":
+    main()
