@@ -122,83 +122,20 @@ except Exception as InfoErr:
 try:
     # Функция для создания карточки Trello
     def create_trello_card(card_name, card_desc, number_one):
-        card_name = card_name.split()
-        print(card_name)
 
-        match number_one:
-            case '#1':
-                create_card_end_point = main_trello_end_point + 'cards'
-                json_object = {"key": trello_key,
-                               "token": trello_token,
-                               "idList": application_list_id,
-                               "name": ' '.join(card_name),
-                               "desc": card_desc}
-                new_card = requests.post(create_card_end_point, json=json_object)
-                return json.loads(new_card.text)
-            case '#2':
-                create_card_end_point = main_trello_end_point + 'cards'
-                json_object = {"key": trello_key,
-                               "token": trello_token,
-                               "idList": application_list_id_two,
-                               "name": ' '.join(card_name),
-                               "desc": card_desc}
-                new_card = requests.post(create_card_end_point, json=json_object)
-                return json.loads(new_card.text)
-            case '#3':
-                create_card_end_point = main_trello_end_point + 'cards'
-                json_object = {"key": trello_key,
-                               "token": trello_token,
-                               "idList": application_list_id_tree,
-                               "name": ' '.join(card_name),
-                               "desc": card_desc}
-                new_card = requests.post(create_card_end_point, json=json_object)
-                return json.loads(new_card.text)
-            case '#4':
-                create_card_end_point = main_trello_end_point + 'cards'
-                json_object = {"key": trello_key,
-                               "token": trello_token,
-                               "idList": application_list_id_four,
-                               "name": ' '.join(card_name),
-                               "desc": card_desc}
-                new_card = requests.post(create_card_end_point, json=json_object)
-                return json.loads(new_card.text)
-            case '#5':
-                create_card_end_point = main_trello_end_point + 'cards'
-                json_object = {"key": trello_key,
-                               "token": trello_token,
-                               "idList": application_list_id_five,
-                               "name": ' '.join(card_name),
-                               "desc": card_desc}
-                new_card = requests.post(create_card_end_point, json=json_object)
-                return json.loads(new_card.text)
-            case '#6':
-                create_card_end_point = main_trello_end_point + 'cards'
-                json_object = {"key": trello_key,
-                               "token": trello_token,
-                               "idList": application_list_id_six,
-                               "name": ' '.join(card_name),
-                               "desc": card_desc}
-                new_card = requests.post(create_card_end_point, json=json_object)
-                return json.loads(new_card.text)
-            case '#7':
-                create_card_end_point = main_trello_end_point + 'cards'
-                json_object = {"key": trello_key,
-                               "token": trello_token,
-                               "idList": application_list_id_seven,
-                               "name": ' '.join(card_name),
-                               "desc": card_desc}
-                new_card = requests.post(create_card_end_point, json=json_object)
-                return json.loads(new_card.text)
-            case _:
-                create_card_end_point = main_trello_end_point + 'cards'
-                json_object = {"key": trello_key,
-                               "token": trello_token,
-                               "idList": application_list_id_free_time,
-                               "name": ' '.join(card_name),
-                               "desc": card_desc}
-                new_card = requests.post(create_card_end_point, json=json_object)
-                return json.loads(new_card.text)
-
+        try:
+            card_name = card_name.split()
+            print(card_name)
+            create_card_end_point = main_trello_end_point + 'cards'
+            json_object = {"key": trello_key,
+                           "token": trello_token,
+                           "idList": number_one,
+                           "name": ' '.join(card_name),
+                           "desc": card_desc}
+            new_card = requests.post(create_card_end_point, json=json_object)
+            return json.loads(new_card.text)
+        except KeyError as key_err:
+            print(f'Неизвестная ошибка {key_err}')
         # Отправка запроса на создание карточки в Trello
 
 except Exception as SendToTrelloErr:
@@ -206,8 +143,18 @@ except Exception as SendToTrelloErr:
     print(f"Ошибка {SendToTrelloErr} при отправке запроса в Trello")
 
 
-try:
-    def text_process(list_accept):
+def text_process(list_accept):
+    try:
+        list_id_mapping = {
+            '#1': application_list_id,
+            '#2': application_list_id_two,
+            '#3': application_list_id_tree,
+            '#4': application_list_id_four,
+            '#5': application_list_id_five,
+            '#6': application_list_id_six,
+            '#7': application_list_id_seven,
+
+        }
         change_list = ' '.join(list_accept)
         change_2 = change_list.split('-')
         change_list = change_2[0].split()
@@ -220,12 +167,26 @@ try:
         # Создание карточки Trello на основе текста сообщения пользователя
         print(create_trello_card(' '.join(change_list),
                                  ''.join(change_2[1]) + '\n\nДата:' + dt_string + f'\nВремя:{tm_string}',
-                                 number_one=change_list[0]))
-except Exception as process_err:
-    pass
+                                 list_id_mapping[change_list[0]]))
+    except KeyError as key_error:
+        change_list = ' '.join(list_accept)
+        change_2 = change_list.split('-')
+        change_list = change_2[0].split()
+
+        print(list_accept[0:2], list_accept[2::])
+        print(f"{change_list[0]} Change list")
+        now = datetime.now()
+        dt_string = now.strftime("%d/%m/%Y")
+        tm_string = now.strftime('%H:%M:%S')
+        # Создание карточки Trello на основе текста сообщения пользователя
+        print(create_trello_card(' '.join(change_list),
+                                 ''.join(change_2[1]) + '\n\nДата:' + dt_string + f'\nВремя:{tm_string}',
+                                 application_list_id_free_time))
+        print(f"Ошибка: {key_error}")
+
 
 try:
-    # Обработчик всех остальных сообщений от пользователя
+    # Обработчик всех остальных сообщений от пользователя 
     @dp.message_handler()
     async def echo_message(msg: types.Message):
         # Пересылка сообщения пользователя в групповой чат
@@ -245,10 +206,5 @@ try:
 except Exception as ind_err:
     print(f"Ошибка при отправке на обработке")
 
-
-
-def main():
-    executor.start_polling(dp)
-
 if __name__ == "__main__":
-    main()
+    executor.start_polling(dp)
