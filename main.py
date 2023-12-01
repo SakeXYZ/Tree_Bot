@@ -10,13 +10,12 @@ from datetime import datetime
 load_dotenv()
 # Получение значений переменных окружения из файла .env
 
-
 # Trello URL, IP, TOKEN
 main_trello_end_point = os.getenv('URL')
 trello_key = os.getenv('API_KEY')
 trello_token = os.getenv('TOKEN')
-# Trello ID - CARDS
 
+# Trello ID - CARDS
 application_list_id = os.getenv('ZM_ONE')
 application_list_id_two = os.getenv('ZM_TWO')
 application_list_id_tree = os.getenv('ZM_TREE')
@@ -60,7 +59,7 @@ try:
 
     #1 Технический отдел - Иванов Иван, Проблема с компьютером
 
-    Внимание:
+    Внимание: 
 
     Отправляйте запросы в формате: [код][отдел][-][фамилия][имя][,][проблема] 📝
 
@@ -153,7 +152,6 @@ def text_process(list_accept):
             '#5': application_list_id_five,
             '#6': application_list_id_six,
             '#7': application_list_id_seven,
-
         }
         change_list = ' '.join(list_accept)
         change_2 = change_list.split('-')
@@ -200,9 +198,6 @@ try:
         for i in msg.text.split():
             list_accept.append(i)
         text_process(list_accept)
-
-
-
 except Exception as ind_err:
     print(f"Ошибка при отправке на обработке")
 
